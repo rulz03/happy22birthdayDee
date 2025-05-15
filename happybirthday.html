@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday, Rabiatul Adawiyah</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      overflow-x: hidden;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatHearts 10s linear infinite;
+      opacity: 0.6;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 25px;
+      max-width: 600px;
+      margin: 80px auto 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #e91e63;
+    }
+
+    h2 {
+      color: #555;
+      font-style: italic;
+    }
+
+    .lyrics {
+      background: #ffe6f2;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 15px;
+      font-style: italic;
+    }
+
+    .wish-button {
+      background: #e91e63;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+
+    .wish-button:hover {
+      background: #c2185b;
+    }
+
+    .wish-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 3px solid #e91e63;
+      border-radius: 20px;
+      padding: 25px;
+      max-width: 90%;
+      z-index: 1000;
+      animation: popUp 0.5s ease-out;
+      box-shadow: 0 0 20px #e91e63;
+    }
+
+    @keyframes popUp {
+      from {
+        transform: translate(-50%, -60%) scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      margin-top: 15px;
+      background: #e91e63;
+      color: white;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Hearts -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <div class="card">
+    <img src="her-picture.jpg" alt="Rabiatul Adawiyah" />
+    <h1>Happy Birthday, Rabiatul Adawiyah</h1>
+    <h2>“The Only Exception” – Paramore</h2>
+
+    <div class="lyrics">
+      “You are the only exception<br>
+      And I'm on my way to believing…”
+    </div>
+
+    <button class="wish-button" onclick="showWish()">Click for My Wish</button>
+
+    <audio id="bgm" autoplay loop>
+      <source src="only-exception.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+<div class="wish-popup" id="wishPopup">
+    <h3>To Cik Dee!!!</h3>
+    <p>
+      Happy 22 birthday cikkk!<br>
+      You're my peace, my strength, my inspiration.<br>
+      Every little thing about you is my favorite thing.<br>
+      No matter how busy or tired I get, you're always on my mind.<br>
+      You're not just someone I love you're the only exception.<br>
+    </p>
+    <button class="close-btn" onclick="hideWish()">Close</button>
+  </div>
+
+  <script>
+    function showWish() {
+      document.getElementById('wishPopup').style.display = 'block';
+    }
+
+    function hideWish() {
+      document.getElementById('wishPopup').style.display = 'none';
+    }
+
+    // Tap to activate autoplay (some phones block it)
+    document.addEventListener('click', function () {
+      const audio = document.getElementById('bgm');
+      if (audio.paused) audio.play();
+    });
+  </script>
+
+</body>
+</html>
